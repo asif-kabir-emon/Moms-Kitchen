@@ -48,7 +48,7 @@ const NavBar = () => {
           </ul>
         </div>
         <Link to="/" className="flex items-center md:pl-10 normal-case">
-          <img src={logo} alt="" srcset="" className="h-10 md:h-14 lg:h-18" />
+          <img src={logo} alt="" className="h-10 md:h-14 lg:h-18" />
           <p className="ml-2 text-xs md:text-xl">Mom's Kitchen</p>
         </Link>
       </div>
