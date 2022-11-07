@@ -47,7 +47,7 @@ const NavBar = () => {
             {menuItems}
           </ul>
         </div>
-        <Link to="/" className="flex items-center md:pl-10 normal-case">
+        <Link to="/" className="flex items-center normal-case">
           <img src={logo} alt="" className="h-10 md:h-14 lg:h-18" />
           <p className="ml-2 text-xs md:text-xl">Mom's Kitchen</p>
         </Link>
@@ -55,7 +55,7 @@ const NavBar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
-      <div className="navbar-end md:pr-10">
+      <div className="navbar-end">
         <a href="/" className="btn btn-sm md:btn-md">
           Get started
         </a>
