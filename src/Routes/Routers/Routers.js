@@ -1,6 +1,7 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
+import Main2 from "../../Layout/Main2";
 import Blog from "../../Pages/Blog/Blog";
 import Error from "../../Pages/Error/Error";
 import Home from "../../Pages/Home/Home";
@@ -17,6 +18,12 @@ export const Routers = createBrowserRouter([
       { path: "/home", element: <Home></Home> },
       { path: "/services", element: <Services></Services> },
       { path: "/blogs", element: <Blog></Blog> },
+    ],
+  },
+  {
+    path: "/",
+    element: <Main2></Main2>,
+    children: [
       { path: "/login", element: <Login></Login> },
       { path: "/register", element: <Register></Register> },
       { path: "*", element: <Error></Error> },
