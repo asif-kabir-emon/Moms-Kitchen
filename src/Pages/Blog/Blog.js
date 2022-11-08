@@ -9,7 +9,7 @@ const Blog = () => {
             <h3 className="md:text-2xl font-bold bg-gray-400 m-0 rounded-t-md px-3 py-2">
               Difference between SQL and NoSQL
             </h3>
-            <p className="text-xs md:text-base px-3 py-5">
+            <div className="text-xs md:text-base px-3 py-5">
               <ul className="px-6 list-disc">
                 <li>
                   SQL databases are relational, NoSQL databases are
@@ -33,7 +33,7 @@ const Blog = () => {
                   NoSQL is better for unstructured data like documents or JSON.
                 </li>
               </ul>
-            </p>
+            </div>
           </div>
           <div className="bg-gray-300 rounded-md my-4">
             <h3 className="md:text-2xl font-bold bg-gray-400 m-0 rounded-t-md px-3 py-2">

@@ -4,7 +4,7 @@ import logo from "../../../Assets/logo-i.png";
 const Footer = () => {
   return (
     <div className="p-3 ">
-      <footer className="p-10 bg-neutral text-neutral-content grid md:grid-cols-2 gap-4 rounded">
+      <footer className="p-10 bg-slate-500 text-neutral-content grid md:grid-cols-2 gap-4 rounded">
         <div className="flex flex-col md:flex-row items-center justify-center">
           <img src={logo} alt="" className="h-20" />
           <p className="pl-2 text-center md:text-justify my-3">
