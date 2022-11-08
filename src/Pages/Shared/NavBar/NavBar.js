@@ -82,7 +82,7 @@ const NavBar = () => {
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
       <div className="navbar-end">
-        <Link href="/" className="btn btn-sm normal-case md:btn-md">
+        <Link to="/blogs" className="btn btn-sm normal-case md:btn-md">
           Our Blog
         </Link>
       </div>

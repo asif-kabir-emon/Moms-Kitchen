@@ -104,7 +104,8 @@ const Register = () => {
                 />
               </div>
             </form>
-            <p className="text-center mt-4">Or Sign Up with</p>
+            <div className="divider">Or</div>
+            <p className="text-center">Sign Up with</p>
             <SocialLogin></SocialLogin>
             <p className="text-center">
               Already have an account?

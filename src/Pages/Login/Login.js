@@ -81,7 +81,8 @@ const Login = () => {
                 />
               </div>
             </form>
-            <p className="text-center mt-4">Or Sign Up with</p>
+            <div className="divider">Or</div>
+            <p className="text-center">Log In with</p>
             <SocialLogin></SocialLogin>
             <p className="text-center">
               Don't have an account?
