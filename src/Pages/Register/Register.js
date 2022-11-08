@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import useTitle from "../../Hooks/useTitle";
-import registerLogo from "../../Assets/Icons/register.webp";
+import registerLogo from "../../Assets/Images/register.webp";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 import { AuthContext } from "../../Contexts/UserContext";

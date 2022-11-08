@@ -22,21 +22,23 @@ const Food = ({ food }) => {
             {detail.length > 100 ? (
               <>
                 {detail.slice(0, 100) + " ... "}
-                <Link className="text-blue-400 text-justify">Read More</Link>
+                <Link className="text-amber-500 text-justify">Read More</Link>
               </>
             ) : (
               <>{detail}</>
             )}
           </p>
-          <div className="flex justify-between">
+          <div className="flex justify-between text-orange-600">
             <p>Price: ${price}</p>
             <span className="flex items-center">
-              Rating: <FaStar className="text-yellow-400 mx-1"></FaStar>
+              Rating: <FaStar className="text-yellow-500 mx-1"></FaStar>
               {rating}
             </span>
           </div>
           <div className="">
-            <button className="btn btn-primary w-full">Read in Deatail</button>
+            <button className="btn border-0 bg-orange-500 hover:bg-orange-600 w-full">
+              Read in Deatail
+            </button>
           </div>
         </div>
       </div>

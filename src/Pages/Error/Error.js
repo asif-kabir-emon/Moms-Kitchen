@@ -1,5 +1,5 @@
 import React from "react";
-import errorImage from "../../Assets/Icons/error-404.webp";
+import errorImage from "../../Assets/Images/error-404.webp";
 
 const Error = () => {
   return (

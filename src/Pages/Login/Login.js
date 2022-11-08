@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import useTitle from "../../Hooks/useTitle";
-import loginLogo from "../../Assets/Icons/login.jpg";
+import loginLogo from "../../Assets/Images/login.webp";
 import { Link } from "react-router-dom";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 import { AuthContext } from "../../Contexts/UserContext";
