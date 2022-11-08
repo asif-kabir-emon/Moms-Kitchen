@@ -1,25 +1,51 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../../Assets/logo-i.png";
-
-const menuItems = (
-  <>
-    <li>
-      <Link to="/home">Home</Link>
-    </li>
-    <li>
-      <Link to="/services">Services</Link>
-    </li>
-    <li>
-      <Link to="/login">Login</Link>
-    </li>
-    <li>
-      <Link to="/register">Register</Link>
-    </li>
-  </>
-);
+import { AuthContext } from "../../../Contexts/UserContext";
 
 const NavBar = () => {
+  const { user, userLogout } = useContext(AuthContext);
+
+  const hangleLogOut = () => {
+    userLogout()
+      .then(() => {})
+      .catch((error) => {
+        console.error(error.message);
+      });
+  };
+
+  const menuItems = (
+    <>
+      <li>
+        <Link to="/home">Home</Link>
+      </li>
+      <li>
+        <Link to="/services">Services</Link>
+      </li>
+      {user?.uid ? (
+        <>
+          <li>
+            <button
+              onClick={hangleLogOut}
+              className="btn btn-primary text-white"
+            >
+              Log Out
+            </button>
+          </li>
+        </>
+      ) : (
+        <>
+          {" "}
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/register">Register</Link>
+          </li>
+        </>
+      )}
+    </>
+  );
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -56,9 +82,9 @@ const NavBar = () => {
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
       <div className="navbar-end">
-        <a href="/" className="btn btn-sm md:btn-md">
-          Get started
-        </a>
+        <Link href="/" className="btn btn-sm normal-case md:btn-md">
+          Our Blog
+        </Link>
       </div>
     </div>
   );

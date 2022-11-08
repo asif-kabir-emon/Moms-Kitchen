@@ -1,23 +1,60 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import useTitle from "../../Hooks/useTitle";
-import loginLogo from "../../Assets/Icons/login.svg";
-import { Link } from "react-router-dom";
+import registerLogo from "../../Assets/Icons/register.webp";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
+import { AuthContext } from "../../Contexts/UserContext";
 
 const Register = () => {
   useTitle("Register");
+  const { register, updateUserInfo } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.form?.user || "/";
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    console.log(name, email, password);
+
+    register(email, password)
+      .then(() => {
+        setErrorMessage("");
+        handleUpdateUserInfo(name);
+        toast.success("Succefully Registered");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+        toast.error("Failed to Register");
+      });
+  };
+
+  const handleUpdateUserInfo = (name) => {
+    updateUserInfo({ displayName: name })
+      .then(() => {})
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <div className="hero">
-      <div className="hero-content grid md:grid-cols-2 gap-10 flex-col lg:flex-row mt-10 md:mt-28">
+      <div className="hero-content grid md:grid-cols-2 gap-10 flex-col lg:flex-row mt-2 md:mt-28">
         <div className="flex justify-center">
-          <img src={loginLogo} className="w-3/4" alt="" />
+          <img src={registerLogo} className="w-3/4" alt="" />
         </div>
         <div className="card w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body w-full">
             <h2 className="text-4xl font-bold text-center">Register</h2>
             <p className="text-xs text-red-500 text-center">{errorMessage}</p>
-            <form>
+            <form onSubmit={handleRegister}>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Your Name</span>

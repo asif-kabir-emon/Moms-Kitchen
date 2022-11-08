@@ -1,23 +1,49 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import useTitle from "../../Hooks/useTitle";
-import loginLogo from "../../Assets/Icons/login.svg";
+import loginLogo from "../../Assets/Icons/login.jpg";
 import { Link } from "react-router-dom";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
+import { AuthContext } from "../../Contexts/UserContext";
 
 const Login = () => {
   useTitle("Login");
+  const { emailpasswordLogin } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  let from = location.state?.from?.pathname || "/";
+
+  const handleUserLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    emailpasswordLogin(email, password)
+      .then(() => {
+        setErrorMessage("");
+        toast.success("Successfully Login");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+        toast.error("Failed to Login");
+      });
+  };
+
   return (
     <div className="hero">
-      <div className="hero-content grid md:grid-cols-2 gap-10 flex-col lg:flex-row mt-10 md:mt-28">
+      <div className="hero-content grid md:grid-cols-2 gap-10 flex-col lg:flex-row mt-2 md:mt-28">
         <div className="flex justify-center">
-          <img src={loginLogo} className="w-3/4" alt="" />
+          <img src={loginLogo} className="w-full" alt="" />
         </div>
         <div className="card w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body w-full">
             <h2 className="text-4xl font-bold text-center">Login</h2>
             <p className="text-xs text-red-500 text-center">{errorMessage}</p>
-            <form>
+            <form onSubmit={handleUserLogin}>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Your Email</span>
