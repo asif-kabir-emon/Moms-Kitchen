@@ -24,13 +24,11 @@ const FoodService = () => {
   //     });
   // }, [page, size]);
   return (
-    <div>
-      <div className="flex justify-center my-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {foods.map((food) => (
-            <Food key={food._uid} food={food}></Food>
-          ))}
-        </div>
+    <div className="flex justify-center my-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {foods.map((food) => (
+          <Food key={food._uid} food={food}></Food>
+        ))}
       </div>
     </div>
   );
