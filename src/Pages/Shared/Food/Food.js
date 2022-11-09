@@ -5,7 +5,7 @@ import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 
 const Food = ({ food }) => {
-  const { _uid, food_name, image, rating, price, detail } = food;
+  const { _id, food_name, image, rating, price, detail } = food;
   return (
     <div>
       <div className="card m-5 xl:w-96 bg-base-100 shadow-xl">
@@ -22,7 +22,12 @@ const Food = ({ food }) => {
             {detail.length > 100 ? (
               <>
                 {detail.slice(0, 100) + " ... "}
-                <Link className="text-amber-500 text-justify">Read More</Link>
+                <Link
+                  to={`/services/${_id}`}
+                  className="text-amber-500 text-justify"
+                >
+                  Read More
+                </Link>
               </>
             ) : (
               <>{detail}</>
@@ -36,9 +41,11 @@ const Food = ({ food }) => {
             </span>
           </div>
           <div className="">
-            <button className="btn border-0 bg-orange-500 hover:bg-orange-600 w-full">
-              Read in Deatail
-            </button>
+            <Link to={`/services/${_id}`}>
+              <button className="btn border-0 bg-orange-500 hover:bg-orange-600 w-full">
+                View Deatails
+              </button>
+            </Link>
           </div>
         </div>
       </div>

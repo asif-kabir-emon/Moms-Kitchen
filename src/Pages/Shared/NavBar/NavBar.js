@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../../Assets/logo-i.png";
 import { AuthContext } from "../../../Contexts/UserContext";
 
@@ -17,17 +17,51 @@ const NavBar = () => {
   const menuItems = (
     <>
       <li>
-        <Link to="/home">Home</Link>
+        <NavLink
+          to="/home"
+          className={({ isActive }) =>
+            isActive ? "text-orange-600" : undefined
+          }
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <Link to="/services">Services</Link>
+        <NavLink
+          to="/services"
+          className={({ isActive }) =>
+            isActive ? "text-orange-600" : undefined
+          }
+        >
+          Services
+        </NavLink>
       </li>
       {user?.uid ? (
         <>
           <li>
+            <NavLink
+              to="/myReviews"
+              className={({ isActive }) =>
+                isActive ? "text-orange-600" : undefined
+              }
+            >
+              My Reviews
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/addService"
+              className={({ isActive }) =>
+                isActive ? "text-orange-600" : undefined
+              }
+            >
+              Add Service
+            </NavLink>
+          </li>
+          <li>
             <button
               onClick={hangleLogOut}
-              className="btn btn-primary text-white"
+              className="btn btn-outline btn-primary normal-case btn-md text-white"
             >
               Log Out
             </button>
@@ -35,12 +69,25 @@ const NavBar = () => {
         </>
       ) : (
         <>
-          {" "}
           <li>
-            <Link to="/login">Login</Link>
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                isActive ? "text-orange-600" : undefined
+              }
+            >
+              Login
+            </NavLink>
           </li>
           <li>
-            <Link to="/register">Register</Link>
+            <NavLink
+              to="/register"
+              className={({ isActive }) =>
+                isActive ? "text-orange-600" : undefined
+              }
+            >
+              Register
+            </NavLink>
           </li>
         </>
       )}
