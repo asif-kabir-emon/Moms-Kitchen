@@ -28,7 +28,7 @@ const SocialLogin = () => {
         const currentUser = {
           email: user.email,
         };
-        fetch(`http://localhost:4000/jwt`, {
+        fetch(`https://moms-kitchen-service-server.vercel.app/jwt`, {
           method: "POST",
           headers: {
             "content-type": "application/json",

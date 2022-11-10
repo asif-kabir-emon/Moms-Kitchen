@@ -29,13 +29,16 @@ export const Routers = createBrowserRouter([
       {
         path: "/services",
         element: <Services></Services>,
-        loader: () => fetch(`http://localhost:4000/foods`),
+        loader: () =>
+          fetch(`https://moms-kitchen-service-server.vercel.app/foods`),
       },
       {
         path: "/services/:id",
         element: <ServiceDetail></ServiceDetail>,
         loader: ({ params }) =>
-          fetch(`http://localhost:4000/foods/${params.id}`),
+          fetch(
+            `https://moms-kitchen-service-server.vercel.app/foods/${params.id}`
+          ),
       },
       {
         path: "/myReviews",

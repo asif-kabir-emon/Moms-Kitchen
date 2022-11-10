@@ -4,6 +4,7 @@ import FoodService from "../FoodService/FoodService";
 import { Link } from "react-router-dom";
 import Banner from "../Banner/Banner";
 import AboutService from "../AboutService/AboutService";
+import AboutUs from "../AboutUs/AboutUs";
 
 const Home = () => {
   useTitle("Home");
@@ -14,6 +15,8 @@ const Home = () => {
         Services
       </h2>
       <AboutService></AboutService>
+
+      <AboutUs></AboutUs>
       <h1 className="text-4xl font-bold text-center mt-2">Our Food Items</h1>
       <p className="text-center mt-2">
         Our food item's ingridients are fresh. We give free delivery all orders

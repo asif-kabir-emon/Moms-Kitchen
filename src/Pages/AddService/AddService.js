@@ -25,7 +25,7 @@ const AddService = () => {
 
     // console.log(food);
 
-    fetch(`http://localhost:4000/foods`, {
+    fetch(`https://moms-kitchen-service-server.vercel.app/foods`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

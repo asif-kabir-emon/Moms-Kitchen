@@ -6,11 +6,11 @@ const FoodService = () => {
   const [foods, setFoods] = useState([]);
   const size = 3;
   useEffect(() => {
-    const url = `http://localhost:4000/foods?size=${size}`;
+    const url = `https://moms-kitchen-service-server.vercel.app/foods?size=${size}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        setFoods(data["foods"]);
+        setFoods(data);
       });
   }, []);
 

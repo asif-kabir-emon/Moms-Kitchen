@@ -10,7 +10,7 @@ const Footer = () => {
           <p className="pl-2 text-center md:text-justify my-3">
             Mom's Kitchen
             <br />
-            Providing delivery food since 1992
+            Online food shop since 2012
           </p>
         </div>
         <div className="flex flex-col justify-center items-center">

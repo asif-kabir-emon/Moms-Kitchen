@@ -18,20 +18,19 @@ const Register = () => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
+    const image = form.image.value;
     const email = form.email.value;
     const password = form.password.value;
-
-    console.log(name, email, password);
 
     register(email, password)
       .then((result) => {
         const user = result.user;
         setErrorMessage("");
-        handleUpdateUserInfo(name);
+        handleUpdateUserInfo(name, image);
         const currentUser = {
           email: user.email,
         };
-        fetch(`http://localhost:4000/jwt`, {
+        fetch(`https://moms-kitchen-service-server.vercel.app/jwt`, {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -51,8 +50,8 @@ const Register = () => {
       });
   };
 
-  const handleUpdateUserInfo = (name) => {
-    updateUserInfo({ displayName: name })
+  const handleUpdateUserInfo = (name, image) => {
+    updateUserInfo({ displayName: name, photoURL: image })
       .then(() => {})
       .catch((error) => {
         console.log(error.message);
@@ -78,6 +77,18 @@ const Register = () => {
                   type="name"
                   name="name"
                   placeholder="Name"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Your Photo URL</span>
+                </label>
+                <input
+                  type="name"
+                  name="image"
+                  placeholder="Photo URL"
                   className="input input-bordered"
                   required
                 />

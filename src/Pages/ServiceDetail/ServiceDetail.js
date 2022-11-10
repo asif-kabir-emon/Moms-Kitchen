@@ -15,10 +15,11 @@ const ServiceDetail = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/reviewsByFoodId/${_id}`)
+    fetch(
+      `https://moms-kitchen-service-server.vercel.app/reviewsByFoodId/${_id}`
+    )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setReviews(data);
       });
   }, [_id]);
@@ -44,26 +45,32 @@ const ServiceDetail = () => {
       reviewer_image,
     };
 
-    fetch(`http://localhost:4000/reviews`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(review),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.acknowledged) {
-          toast.success("Successfully Review Added");
-          form.reset();
+    if (review_text.length > 4) {
+      fetch(`https://moms-kitchen-service-server.vercel.app/reviews`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(review),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            toast.success("Successfully Review Added");
+            form.reset();
 
-          fetch(`http://localhost:4000/reviewsByFoodId/${_id}`)
-            .then((res) => res.json())
-            .then((data) => {
-              setReviews(data);
-            });
-        }
-      });
+            fetch(
+              `https://moms-kitchen-service-server.vercel.app/reviewsByFoodId/${_id}`
+            )
+              .then((res) => res.json())
+              .then((data) => {
+                setReviews(data);
+              });
+          }
+        });
+    } else {
+      toast.error("Please write review in more than 3 characters.");
+    }
   };
 
   return (
@@ -133,7 +140,6 @@ const ServiceDetail = () => {
                   name="review"
                   placeholder="Write your review"
                   className="textarea textarea-bordered h-20"
-                  required
                 ></textarea>
               </div>
               <div className="my-2 text-center">

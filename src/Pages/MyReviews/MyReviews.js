@@ -10,7 +10,9 @@ const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/reviewsByUserId/${user.uid}`)
+    fetch(
+      `https://moms-kitchen-service-server.vercel.app/reviewsByUserId/${user.uid}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
@@ -21,12 +23,11 @@ const MyReviews = () => {
     const isWantDelete = window.confirm("Do you want to delete this review?");
 
     if (isWantDelete) {
-      fetch(`http://localhost:4000/reviews/${id}`, {
+      fetch(`https://moms-kitchen-service-server.vercel.app/reviews/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           if (data.deletedCount > 0) {
             toast.success("Delete Successfully");
             const remaining = reviews.filter((review) => review._id !== id);
@@ -37,7 +38,9 @@ const MyReviews = () => {
   };
 
   const updateReviews = () => {
-    fetch(`http://localhost:4000/reviewsByUserId/${user.uid}`)
+    fetch(
+      `https://moms-kitchen-service-server.vercel.app/reviewsByUserId/${user.uid}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);

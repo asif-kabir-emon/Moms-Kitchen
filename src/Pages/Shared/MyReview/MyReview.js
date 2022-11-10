@@ -6,7 +6,9 @@ const MyReview = ({ review, handleDeleteReview, updateReviews }) => {
   const { _id, review_text, review_food_id } = review;
   const [service, setService] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:4000/foods/${review_food_id}`)
+    fetch(
+      `https://moms-kitchen-service-server.vercel.app/foods/${review_food_id}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setService(data);
@@ -18,7 +20,7 @@ const MyReview = ({ review, handleDeleteReview, updateReviews }) => {
     const form = event.target;
     const review_text = form.review.value;
 
-    fetch(`http://localhost:4000/reviews/${_id}`, {
+    fetch(`https://moms-kitchen-service-server.vercel.app/reviews/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
