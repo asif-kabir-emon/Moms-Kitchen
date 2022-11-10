@@ -44,8 +44,6 @@ const ServiceDetail = () => {
       reviewer_image,
     };
 
-    console.log(review);
-
     fetch(`http://localhost:4000/reviews`, {
       method: "POST",
       headers: {
@@ -55,7 +53,6 @@ const ServiceDetail = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
         if (data.acknowledged) {
           toast.success("Successfully Review Added");
           form.reset();
@@ -63,7 +60,6 @@ const ServiceDetail = () => {
           fetch(`http://localhost:4000/reviewsByFoodId/${_id}`)
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
               setReviews(data);
             });
         }
