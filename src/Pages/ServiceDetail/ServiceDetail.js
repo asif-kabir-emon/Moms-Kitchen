@@ -21,7 +21,7 @@ const ServiceDetail = () => {
         console.log(data);
         setReviews(data);
       });
-  }, []);
+  }, [_id]);
 
   const handlAddReview = (event) => {
     event.preventDefault();

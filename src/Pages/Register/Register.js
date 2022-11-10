@@ -24,11 +24,26 @@ const Register = () => {
     console.log(name, email, password);
 
     register(email, password)
-      .then(() => {
+      .then((result) => {
+        const user = result.user;
         setErrorMessage("");
         handleUpdateUserInfo(name);
-        toast.success("Succefully Registered");
-        navigate(from, { replace: true });
+        const currentUser = {
+          email: user.email,
+        };
+        fetch(`http://localhost:4000/jwt`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("token", data.token);
+            toast.success("Successfully Login");
+            navigate(from, { replace: true });
+          });
       })
       .catch((error) => {
         setErrorMessage(error.message);

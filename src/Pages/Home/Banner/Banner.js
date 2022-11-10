@@ -20,12 +20,6 @@ const bannerData = [
     next: 3,
   },
   {
-    image: img2,
-    prev: 1,
-    id: 2,
-    next: 3,
-  },
-  {
     image: img3,
     prev: 2,
     id: 3,
