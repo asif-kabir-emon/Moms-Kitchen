@@ -36,7 +36,7 @@ const NavBar = () => {
           Services
         </NavLink>
       </li>
-      {user?.uid ? (
+      {user?.uid && (
         <>
           <li>
             <NavLink
@@ -58,6 +58,15 @@ const NavBar = () => {
               Add Service
             </NavLink>
           </li>
+        </>
+      )}
+    </>
+  );
+
+  const profileItems = (
+    <>
+      {user?.uid ? (
+        <>
           <li>
             <button
               onClick={hangleLogOut}
@@ -93,6 +102,7 @@ const NavBar = () => {
       )}
     </>
   );
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -129,9 +139,7 @@ const NavBar = () => {
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/blogs" className="btn btn-sm normal-case md:btn-md">
-          Our Blog
-        </Link>
+        <ul className="menu menu-horizontal p-0">{profileItems}</ul>
       </div>
     </div>
   );
