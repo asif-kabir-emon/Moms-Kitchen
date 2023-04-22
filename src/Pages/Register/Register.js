@@ -61,10 +61,10 @@ const Register = () => {
   return (
     <div className="hero">
       <div className="hero-content grid md:grid-cols-2 gap-10 flex-col lg:flex-row mt-2 md:mt-28">
-        <div className="flex justify-center">
+        <div className="hidden md:block">
           <img src={registerLogo} className="w-3/4" alt="" />
         </div>
-        <div className="card w-full max-w-sm shadow-2xl bg-base-100">
+        <div className="card w-96 max-w-sm shadow-2xl bg-base-100">
           <div className="card-body w-full">
             <h2 className="text-4xl font-bold text-center">Register</h2>
             <p className="text-xs text-red-500 text-center">{errorMessage}</p>

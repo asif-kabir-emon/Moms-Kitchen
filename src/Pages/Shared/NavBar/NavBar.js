@@ -79,6 +79,14 @@ const NavBar = () => {
       ) : (
         <>
           <li>
+            <button
+              to="/login"
+              className="btn btn-outline btn-primary normal-case btn-md text-white"
+            >
+              Log in
+            </button>
+          </li>
+          {/* <li>
             <NavLink
               to="/login"
               className={({ isActive }) =>
@@ -87,8 +95,8 @@ const NavBar = () => {
             >
               Login
             </NavLink>
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <NavLink
               to="/register"
               className={({ isActive }) =>
@@ -97,7 +105,7 @@ const NavBar = () => {
             >
               Register
             </NavLink>
-          </li>
+          </li> */}
         </>
       )}
     </>
